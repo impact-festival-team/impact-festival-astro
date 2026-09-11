@@ -1,0 +1,101 @@
+---
+// CTABanner.astro
+// Used twice on the page with different text AND different action content
+// (a "Visit Trifolium" button + Instagram link, vs a single ticket button).
+// Title/text are props; the action area is a slot, since its content shape
+// genuinely differs between the two uses.
+
+interface Props {
+  heading: string;
+  text?: string;
+  align?: 'left' | 'center';
+}
+
+const { heading, text, align = 'left' } = Astro.props;
+---
+
+<section class="banner" class:list={{ 'banner--center': align === 'center' }}>
+  <div class="content">
+    <div class="text-block">
+      <h4 class="heading">{heading}</h4>
+      {text && <p class="body-text">{text}</p>}
+    </div>
+
+    <div class="actions">
+      <slot />
+    </div>
+  </div>
+</section>
+
+<style>
+  .banner {
+    background: var(--color-black);
+    display: flex;
+    align-items: center;
+    padding: 80px 64px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .banner--center {
+    justify-content: center;
+    text-align: center;
+  }
+
+  .banner--center .actions {
+    justify-content: center;
+  }
+
+  .content {
+    display: flex;
+    flex-direction: column;
+    gap: 48px;
+    max-width: 900px;
+  }
+
+  .text-block {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .heading {
+    font-weight: 700;
+    font-size: 48px;
+    color: var(--color-white);
+  }
+
+  .body-text {
+    font-size: 16px;
+    color: var(--color-white);
+    line-height: 1.4;
+  }
+
+  .actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 32px;
+    align-items: center;
+  }
+
+  @media (max-width: 640px) {
+    .banner {
+      padding: 48px 24px;
+    }
+
+    .heading {
+      font-size: 32px;
+    }
+
+    .actions {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 20px;
+      width: 100%;
+    }
+
+    .banner--center .actions {
+      align-items: center;
+    }
+  }
+</style>

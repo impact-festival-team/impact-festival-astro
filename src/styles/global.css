@@ -1,0 +1,39 @@
+/* global.css
+   Shared design tokens and base resets used across every page and component.
+   Component-specific styles stay colocated in their own .astro files —
+   only truly global rules belong here. */
+
+:root {
+  --color-black: #261e1e;
+  --color-white: #fefff7;
+  --color-red: #ff4d38;
+  --color-grey: #969a9d;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--color-white);
+  color: var(--color-black);
+  overflow-x: hidden;
+}
+
+h1, h2, h3, h4, p {
+  margin: 0;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}

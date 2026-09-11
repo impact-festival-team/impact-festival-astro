@@ -1,0 +1,69 @@
+---
+// TrifoliumIntro.astro
+// The two-column intro block between the schedule and the feature list:
+// big heading + summary on the left, short blurb on the right.
+
+interface Props {
+  heading: string;
+  summary: string;
+  blurb: string;
+}
+
+const { heading, summary, blurb } = Astro.props;
+---
+
+<section class="intro">
+  <div class="main">
+    <h2 class="heading">{heading}</h2>
+    <p class="summary">{summary}</p>
+  </div>
+  <p class="blurb">{blurb}</p>
+</section>
+
+<style>
+  .intro {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 48px;
+    padding: 80px 28px 48px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .main {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    flex: 2 1 400px;
+  }
+
+  .heading {
+    font-weight: 700;
+    font-size: 40px;
+    line-height: 1.15;
+  }
+
+  .summary {
+    font-size: 16px;
+    line-height: 1.4;
+    max-width: 480px;
+  }
+
+  .blurb {
+    font-size: 16px;
+    line-height: 1.4;
+    flex: 1 1 280px;
+    max-width: 340px;
+  }
+
+  @media (max-width: 640px) {
+    .intro {
+      padding: 48px 24px;
+    }
+
+    .heading {
+      font-size: 28px;
+    }
+  }
+</style>

@@ -1,0 +1,142 @@
+---
+// Hero.astro
+// The photo-collage headline is dozens of individual vector shapes in Figma.
+// Don't rebuild it shape-by-shape: select the whole group in Figma, right-click
+// -> "Export" -> PNG (2x) or SVG, save it as /public/images/hero-collage.svg,
+// and reference it below as one image.
+
+interface Props {
+  dateLabel?: string;
+  tagline?: string;
+  hostedBy?: string;
+  summary?: string;
+}
+
+const {
+  dateLabel = 'Sept 11–12, 2026',
+  tagline = 'Built by Hand, Driven by Vision, Created for Impact',
+  hostedBy = 'hosted by trifolium',
+  summary = "Music, art, talks, workshops and food from Trifolium — Sydhavnen's workshop and office community, opening its doors once a year. A place to meet the people doing the work, and start something with them.",
+} = Astro.props;
+---
+
+<section class="hero">
+  <div class="collage-wrap">
+    <img
+      src="/images/hero-collage.svg"
+      alt="Impact Festival — Live at Trifolium"
+      class="collage"
+    />
+  </div>
+
+  <div class="tagline-row">
+    <p>{dateLabel}</p>
+    <p class="tagline-text">{tagline}</p>
+    <p>{hostedBy}</p>
+  </div>
+
+  <div class="summary-row">
+    <p class="summary-text">{summary}</p>
+    <a href="/program" class="program-btn">See full program →</a>
+  </div>
+</section>
+
+<style>
+  .hero {
+    background: var(--color-black);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 48px;
+    width: 100%;
+  }
+
+  .collage-wrap {
+    padding: 0 28px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .collage {
+    width: 100%;
+    height: auto;
+  }
+
+  .tagline-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 0 28px 48px;
+    width: 100%;
+    box-sizing: border-box;
+    color: var(--color-red);
+    font-size: 16px;
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+
+  .tagline-text {
+    max-width: 487px;
+    flex: 2 1 260px;
+  }
+
+  .summary-row {
+    border-top: 1px solid var(--color-white);
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 24px;
+    padding: 48px 28px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .summary-text {
+    color: var(--color-white);
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 1.4;
+    flex: 2 1 320px;
+    max-width: 640px;
+  }
+
+  .program-btn {
+    border: 1px solid var(--color-red);
+    color: var(--color-red);
+    font-weight: 700;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    height: 50px;
+    padding: 12px 16px;
+    border-radius: 2px;
+    white-space: nowrap;
+  }
+
+  @media (max-width: 768px) {
+    .tagline-row {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 8px;
+      font-size: 13px;
+    }
+
+    .tagline-text {
+      max-width: 100%;
+    }
+
+    .summary-row {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 24px;
+    }
+
+    .summary-text {
+      max-width: 100%;
+    }
+  }
+</style>

@@ -1,0 +1,91 @@
+---
+// FeatureRow.astro
+// One row in a facility/feature list — title, short description, and an
+// optional price tag pulled straight from Trifolium's real offerings.
+// Used 4 times on the Trifolium page with different props.
+
+interface Props {
+  title: string;
+  description: string;
+  price?: string;
+  href?: string;
+}
+
+const { title, description, price, href } = Astro.props;
+---
+
+<div class="row">
+  <div class="row-text">
+    <h4 class="row-title">{title}</h4>
+    <p class="row-description">{description}</p>
+  </div>
+
+  <div class="row-meta">
+    {price && <p class="row-price">{price}</p>}
+    {href && (
+      <a href={href} class="row-link">Learn more →</a>
+    )}
+  </div>
+</div>
+
+<style>
+  .row {
+    border-bottom: 1px solid var(--color-grey);
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 24px 28px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .row-text {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    flex: 2 1 320px;
+  }
+
+  .row-title {
+    font-weight: 700;
+    font-size: 20px;
+  }
+
+  .row-description {
+    font-size: 16px;
+    line-height: 1.4;
+  }
+
+  .row-meta {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    white-space: nowrap;
+  }
+
+  .row-price {
+    font-weight: 600;
+    font-size: 16px;
+  }
+
+  .row-link {
+    border-bottom: 1px solid var(--color-black);
+    font-weight: 700;
+    font-size: 14px;
+  }
+
+  @media (max-width: 640px) {
+    .row {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 12px;
+    }
+
+    .row-meta {
+      justify-content: space-between;
+      width: 100%;
+    }
+  }
+</style>

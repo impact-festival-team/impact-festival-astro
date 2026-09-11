@@ -1,0 +1,181 @@
+---
+import Layout from '../layouts/Layout.astro';
+import CTABanner from '../components/CTABanner.astro';
+import ShowcaseItem from '../components/ShowcaseItem.astro';
+
+// "Fra affald til kunst" — content category 1 from the SoMe strategy.
+// Not shown anywhere on the homepage.
+const showcase = [
+  {
+    image: '/images/trifolium/waste-to-art-1.jpg',
+    title: 'Offcuts to armature',
+    caption: 'Scrap steel from the metal workshop, cut and welded into the festival stage frame.',
+  },
+  {
+    image: '/images/trifolium/waste-to-art-2.jpg',
+    title: 'Reclaimed timber panels',
+    caption: 'Leftover boards from a neighbouring joinery, repurposed into the signage you see on site.',
+  },
+  {
+    image: '/images/trifolium/waste-to-art-3.jpg',
+    title: 'The finished piece',
+    caption: 'Installed for festival weekend — then it stays up in the workshop hall year-round.',
+  },
+];
+
+// "Mød impact-økosystemet" — content category 3. Also not on the homepage.
+const partners = [
+  {
+    name: 'Kooperationen i Nordvest',
+    description: 'A worker-owned cooperative network based in Copenhagen NV, collaborating with Trifolium on shared materials and tools.',
+  },
+  {
+    name: 'Demokrati Garagen',
+    description: 'A civic workshop space exploring participation and democracy through making — regular cross-visits with Trifolium\'s community.',
+  },
+];
+---
+
+<Layout title="Trifolium — Impact Festival">
+  <section class="intro">
+    <h2 class="intro-heading">A community that doesn't close when the festival does</h2>
+    <p class="intro-text">
+      Impact Festival happens once a year. Trifolium is the workshop and office
+      community behind it, running every day of the year — this is a look at
+      some of what happens here between festivals.
+    </p>
+  </section>
+
+  <section class="showcase">
+    <h3 class="section-heading">From waste to art</h3>
+    <p class="section-subheading">
+      Every year, offcuts from the metal workshop become part of the festival itself.
+    </p>
+    <div class="showcase-grid">
+      {showcase.map((item) => <ShowcaseItem {...item} />)}
+    </div>
+  </section>
+
+  <section class="partners">
+    <h3 class="section-heading">Part of a bigger ecosystem</h3>
+    <p class="section-subheading">
+      Trifolium works alongside other impact-driven communities across Copenhagen.
+    </p>
+    <div class="partners-list">
+      {partners.map((partner) => (
+        <div class="partner">
+          <h4 class="partner-name">{partner.name}</h4>
+          <p class="partner-description">{partner.description}</p>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <CTABanner
+    heading="See it for yourself"
+    text="Book a studio visit, or follow along on Instagram between festivals."
+  >
+    <a href="https://trifo.dk/pages/rundvisning" class="btn-outline-white">
+      Book a visit
+    </a>
+    <a href="https://www.instagram.com/trifolium_cph/" class="btn-link-white">
+      Follow @trifolium_cph →
+    </a>
+  </CTABanner>
+</Layout>
+
+<style>
+  .intro {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    padding: 64px 28px 48px;
+    max-width: 760px;
+  }
+
+  .intro-heading {
+    font-weight: 700;
+    font-size: 40px;
+    line-height: 1.15;
+  }
+
+  .intro-text {
+    font-size: 16px;
+    line-height: 1.5;
+  }
+
+  .showcase,
+  .partners {
+    padding: 48px 28px;
+    border-top: 1px solid var(--color-grey);
+  }
+
+  .section-heading {
+    font-weight: 700;
+    font-size: 28px;
+    margin-bottom: 8px !important;
+  }
+
+  .section-subheading {
+    font-size: 16px;
+    color: var(--color-grey);
+    margin-bottom: 32px !important;
+  }
+
+  .showcase-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 32px;
+  }
+
+  .partners-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 32px;
+  }
+
+  .partner {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    flex: 1 1 300px;
+  }
+
+  .partner-name {
+    font-weight: 700;
+    font-size: 18px;
+  }
+
+  .partner-description {
+    font-size: 15px;
+    line-height: 1.4;
+  }
+
+  .btn-outline-white {
+    border: 1px solid var(--color-white);
+    color: var(--color-white);
+    font-weight: 500;
+    font-size: 18px;
+    padding: 12px 16px;
+    border-radius: 2px;
+  }
+
+  .btn-link-white {
+    border-bottom: 1px solid var(--color-white);
+    color: var(--color-white);
+    font-weight: 700;
+    font-size: 14px;
+  }
+
+  @media (max-width: 640px) {
+    .intro,
+    .showcase,
+    .partners {
+      padding: 40px 24px;
+    }
+
+    .intro-heading {
+      font-size: 28px;
+    }
+  }
+</style>

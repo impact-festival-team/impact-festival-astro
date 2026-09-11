@@ -1,0 +1,95 @@
+---
+// Schedule.astro
+// Owns the "What's on" heading + loops through the event list, rendering
+// one ScheduleItem per entry.
+
+import ScheduleItem from './ScheduleItem.astro';
+
+interface Event {
+  title: string;
+  description: string;
+  image: string;
+  time: string;
+  category: string;
+}
+
+interface Props {
+  events: Event[];
+}
+
+const { events } = Astro.props;
+---
+
+<section class="schedule">
+  <div class="heading-row">
+    <h4 class="heading">What's on</h4>
+    <p class="subheading">
+      A cross-section of the two days — see the<br />
+      full schedule for every stage, every hour.
+    </p>
+  </div>
+
+  {events.map((event) => <ScheduleItem {...event} />)}
+
+  <div class="link-row">
+    <a href="/program" class="schedule-link">See the full schedule →</a>
+  </div>
+</section>
+
+<style>
+  .schedule {
+    width: 100%;
+  }
+
+  .heading-row {
+    border-bottom: 1px solid var(--color-grey);
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 24px 28px;
+  }
+
+  .heading {
+    font-weight: 700;
+    font-size: 48px;
+    max-width: 369px;
+    flex: 1 1 260px;
+  }
+
+  .subheading {
+    font-size: 16px;
+    font-weight: 500;
+    flex: 1 1 260px;
+  }
+
+  .link-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 46px 28px;
+  }
+
+  .schedule-link {
+    border-bottom: 1px solid var(--color-black);
+    font-weight: 700;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  @media (max-width: 640px) {
+    .heading-row {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 16px;
+    }
+
+    .heading {
+      font-size: 32px;
+      max-width: 100%;
+    }
+  }
+</style>

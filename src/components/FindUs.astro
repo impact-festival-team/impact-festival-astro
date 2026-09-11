@@ -1,0 +1,113 @@
+---
+// FindUs.astro
+// Address + transit directions, with a real interactive map on the right.
+// Uses Google Maps' embeddable iframe — no API key, no signup, no JS
+// library needed, and it's genuinely interactive (pan/zoom/click through
+// to full Google Maps).
+
+interface Props {
+  address?: string;
+}
+
+const { address = 'Bådehavnsgade 42, 2450 København SV' } = Astro.props;
+const mapSrc = `https://www.google.com/maps?q=${encodeURIComponent(address)}&output=embed`;
+---
+
+<section class="find-us">
+  <div class="text">
+    <h2 class="heading">Find us</h2>
+
+    <div class="address">
+      <p>Bådehavnsgade 42</p>
+      <p>2450 København SV</p>
+    </div>
+
+    <div class="directions">
+      <p class="label">By train</p>
+      <p>Sydhavn S-train station, then a 12-minute walk along the harbour front.</p>
+    </div>
+
+    <div class="directions">
+      <p class="label">By metro</p>
+      <p>Sluseholmen or Mozarts Plads (M4), then a short walk.</p>
+    </div>
+  </div>
+
+  <div class="map">
+    <iframe
+      src={mapSrc}
+      width="100%"
+      height="100%"
+      style="border:0;"
+      loading="lazy"
+      referrerpolicy="no-referrer-when-downgrade"
+      title="Map showing Trifolium's location"
+    ></iframe>
+  </div>
+</section>
+
+<style>
+  .find-us {
+    display: flex;
+    align-items: stretch;
+    justify-content: space-between;
+    gap: 48px;
+    padding: 80px 28px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .text {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    max-width: 480px;
+    flex: 1 1 320px;
+  }
+
+  .heading {
+    font-weight: 700;
+    font-size: 48px;
+  }
+
+  .address p,
+  .directions p {
+    font-size: 16px;
+    margin: 0;
+  }
+
+  .label {
+    color: var(--color-grey);
+    font-weight: 600;
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    margin-bottom: 4px !important;
+  }
+
+  .map {
+    flex: 1 1 400px;
+    min-height: 320px;
+    overflow: hidden;
+  }
+
+  .map iframe {
+    display: block;
+  }
+
+  @media (max-width: 768px) {
+    .find-us {
+      flex-direction: column;
+      padding: 48px 24px;
+    }
+
+    .heading {
+      font-size: 32px;
+    }
+
+    .map {
+      width: 100%;
+      min-height: 280px;
+    }
+  }
+</style>

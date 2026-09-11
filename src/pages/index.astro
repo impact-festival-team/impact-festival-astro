@@ -1,17 +1,135 @@
 ---
+import Layout from '../layouts/Layout.astro';
+import Hero from '../components/Hero.astro';
+import Schedule from '../components/Schedule.astro';
+import TrifoliumIntro from '../components/TrifoliumIntro.astro';
+import FeatureList from '../components/FeatureList.astro';
+import CTABanner from '../components/CTABanner.astro';
+import FindUs from '../components/FindUs.astro';
 
+// Real content pulled from the Figma file. Replace image paths with your
+// own exported assets in /public/images/.
+const events = [
+  {
+    title: 'Festival opens: Trifolium',
+    description:
+      'The gates open, along with all festival areas — workshops, food court, art, exhibitions and poetry. Come inside, grab a drink, and settle in.',
+    image: '/images/schedule/festival-opens.jpg',
+    time: '15:00 - 03:00',
+    category: 'GENERAL',
+  },
+  {
+    title: 'Workshop: Aura Copenhagen',
+    description:
+      'Make your own artificial bouquet with Aura Copenhagen, and experience how silk, latex, foam, and 3D printed materials can create something beautiful meant to last.',
+    image: '/images/schedule/workshop-aura.jpg',
+    time: '15:00 - 20:00',
+    category: 'WORKSHOP',
+  },
+  {
+    title: 'Talk: Fremtidens Medier (DA)',
+    description:
+      'Hvilken rolle spiller de danske medier i at forme overgangen mod et mere ansvarligt og fremtidsbevidst samfund?',
+    image: '/images/schedule/talk-medier.jpg',
+    time: '16:00 - 16:30',
+    category: 'TALK',
+  },
+  {
+    title: 'Alba Akvama (DK)',
+    description:
+      'Alternative pop blending orchestral MIDI elements, open-tuned guitars, and jazz-inspired chords.',
+    image: '/images/schedule/alba-akvama.jpg',
+    time: '19:00 - 20:00',
+    category: 'MUSIC',
+  },
+  {
+    title: 'DJ Set: Spleen United',
+    description:
+      'Spleen United are bringing their high-energy DJ set to IMPACT FESTIVAL. Expect dark synths, heavy pulses, and a seriously sweaty dancefloor.',
+    image: '/images/schedule/dj-spleen.jpg',
+    time: '01:00 - 02:00',
+    category: 'AFTERPARTY',
+  },
+  {
+    title: 'Impact Dinner',
+    description:
+      'Long table dinner hosted by Restaurant Pauli & FAR. Book seats through our ticket site.',
+    image: '/images/schedule/impact-dinner.jpg',
+    time: '18:00 - 20:00',
+    category: 'FOOD',
+  },
+];
+
+const buildingFeatures = [
+  {
+    title: 'Metal workshop — from waste to art',
+    description:
+      "Follow an offcut's journey from scrap metal to festival-stage sculpture — the same process runs year-round, festival or not.",
+  },
+  {
+    title: 'Office community',
+    description: 'Fixed desks and studios for a mix of craft, impact, and creative businesses.',
+  },
+  {
+    title: 'Photo studio',
+    description: 'Used by resident makers and rented out to the neighbourhood.',
+  },
+  {
+    title: 'Event facilities',
+    description:
+      'The same hall that hosts Impact Festival talks — rented for weddings, workshops, and more.',
+  },
+];
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<Layout title="Impact Festival">
+  <Hero />
+
+  <Schedule events={events} />
+
+  <TrifoliumIntro
+    heading="IMPACT FESTIVAL is two days. Trifolium is every day."
+    summary="Music, art, talks, workshops and food from Trifolium — Sydhavnen's workshop and office community, opening its doors once a year. A place to meet the people doing the work, and start something with them."
+    blurb="Trifolium is the industrial workshop and office community in Sydhavnen that IMPACT FESTIVAL comes from."
+  />
+
+  <FeatureList image="/images/trifolium-building.jpg" features={buildingFeatures} />
+
+  <CTABanner heading="The festival ends. Trifolium doesn't." text="Visit the workshops, follow along on Instagram, or just come back — the door's open year-round.">
+    <a href="/trifolium" class="btn-outline-white">Visit Trifolium</a>
+    <a href="https://instagram.com/trifolium_cph" class="btn-link-white">Follow @trifolium_cph →</a>
+  </CTABanner>
+
+  <FindUs />
+
+  <CTABanner heading="Two days. One festival. Don't miss it." text="Sept 11–12, 2026 · IMPACT FESTIVAL · Tickets sold via Billetto" align="center">
+    <a href="/tickets" class="btn-red">Get your ticket</a>
+  </CTABanner>
+</Layout>
+
+<style>
+  .btn-outline-white {
+    border: 1px solid var(--color-white);
+    color: var(--color-white);
+    font-weight: 500;
+    font-size: 18px;
+    padding: 12px 16px;
+    border-radius: 2px;
+  }
+
+  .btn-link-white {
+    border-bottom: 1px solid var(--color-white);
+    color: var(--color-white);
+    font-weight: 700;
+    font-size: 14px;
+  }
+
+  .btn-red {
+    background: var(--color-red);
+    color: white;
+    font-weight: 500;
+    font-size: 18px;
+    padding: 12px 16px;
+    border-radius: 2px;
+  }
+</style>

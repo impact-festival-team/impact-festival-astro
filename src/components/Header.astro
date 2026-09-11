@@ -1,0 +1,94 @@
+---
+// Header.astro — static, same on every page, so no props.
+---
+
+<header class="header">
+  <div class="nav-left">
+    <a href="/program" class="nav-link">program</a>
+    <a href="/about" class="nav-link">about</a>
+    <a href="/" aria-label="Impact Festival home">
+      <img src="/images/logo.svg" alt="Impact Festival" class="logo" />
+    </a>
+    <a href="/trifolium" class="nav-link">trifolium</a>
+    <a href="/location" class="nav-link">location</a>
+  </div>
+
+  <nav>
+    <a href="/tickets" class="ticket-btn">Get ticket</a>
+  </nav>
+</header>
+
+<style>
+  .header {
+    background: var(--color-white);
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 24px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .nav-left {
+    display: flex;
+    flex: 1;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    min-width: 260px;
+  }
+
+  .nav-link {
+    font-weight: 700;
+    font-size: 15px;
+    text-transform: uppercase;
+    letter-spacing: 0.48px;
+  }
+
+  .logo {
+    height: 32px;
+  }
+
+  .ticket-btn {
+    background: var(--color-red);
+    color: white;
+    font-weight: 500;
+    font-size: 18px;
+    padding: 12px 16px;
+    border-radius: 2px;
+    display: inline-block;
+  }
+
+  /* Tablet: tighten spacing so everything still fits one row */
+  @media (max-width: 900px) {
+    .nav-link {
+      font-size: 12px;
+    }
+  }
+
+  /* Mobile: a 4-link + logo + button row doesn't fit — simplify to
+     logo + ticket button, and move the nav links below as a second row. */
+  @media (max-width: 640px) {
+    .header {
+      flex-wrap: wrap;
+      gap: 16px;
+      padding: 16px;
+    }
+
+    .nav-left {
+      order: 2;
+      width: 100%;
+      flex-wrap: wrap;
+      justify-content: flex-start;
+      gap: 16px;
+    }
+
+    nav {
+      order: 1;
+      margin-left: auto;
+    }
+  }
+</style>
