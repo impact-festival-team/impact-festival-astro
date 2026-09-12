@@ -31,16 +31,17 @@ const { image, features } = Astro.props;
 </section>
 
 <style>
-  .feature-list {
+.feature-list {
     display: flex;
     flex-wrap: wrap;
     gap: 0;
     width: 100%;
+    align-items: stretch; /* Forces both image and text side to match height */
   }
 
   .photo {
-    flex: 1 1 400px;
-    min-height: 320px;
+    flex: 1 1 500px; /* Gives slightly more space to the photo */
+    min-height: 100%;
     overflow: hidden;
   }
 
@@ -48,13 +49,13 @@ const { image, features } = Astro.props;
     width: 100%;
     height: 100%;
     object-fit: cover;
-    min-height: 320px;
+    display: block;
   }
 
   .rows {
     flex: 1 1 400px;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-between; /* Spreads rows edge-to-edge without extra outer padding */
   }
 </style>

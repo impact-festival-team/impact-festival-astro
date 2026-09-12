@@ -48,14 +48,15 @@ const columns = [
     width: 100%;
   }
 
-  .footer-inner {
+.footer-inner {
     border-top: 1px solid rgba(0, 0, 0, 0.1);
     display: flex;
     flex-wrap: wrap;
+    justify-content: space-between; 
     gap: 48px;
-    padding: 80px 24px;
+    padding: 80px 28px;
     width: 100%;
-    max-width: 1392px;
+    max-width: none; 
     box-sizing: border-box;
   }
 
@@ -69,16 +70,22 @@ const columns = [
   .logo-block {
     display: flex;
     flex-direction: column;
+    align-items: flex-start;
     gap: 8px;
   }
 
   .logo {
     height: 16px;
+    width: auto;
+    margin: 0;
+    margin-bottom: 8px;
   }
 
-  .org-text {
+.org-text,
+  .col-link {
     font-size: 16px;
     color: var(--color-grey);
+    margin: 0;
   }
 
   .socials {
@@ -110,7 +117,9 @@ const columns = [
     font-size: 15px;
     text-transform: uppercase;
     letter-spacing: 0.48px;
-    padding-bottom: 16px;
+    margin: 0;
+    margin-bottom: 8px;
+    padding-bottom: 0;
   }
 
   .col-link {
@@ -118,26 +127,24 @@ const columns = [
     color: var(--color-grey);
   }
 
-  .logo-banner {
+.logo-banner {
     background: var(--color-red);
     display: flex;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
     align-items: center;
     justify-content: space-between;
     gap: 16px;
-    min-height: 188px;
-    width: 100%;
-    max-width: 1392px;
+    width: 100%;       
+    max-width: none; 
     box-sizing: border-box;
-    padding: 24px;
+    padding: 24px 28px;
   }
-
-  .banner-logo-1 {
-    height: 153px;
-  }
-
+.banner-logo-1,
   .banner-logo-2 {
-    height: 151px;
+    height: auto;
+    max-height: 120px; 
+    max-width: 48%;    
+    object-fit: contain;
   }
 
   @media (max-width: 900px) {
@@ -155,9 +162,9 @@ const columns = [
   @media (max-width: 640px) {
     .logo-banner {
       height: auto;
-      padding: 24px;
+      padding: 8px;
       flex-wrap: wrap;
-      gap: 24px;
+      gap: 8px;
       justify-content: center;
     }
 

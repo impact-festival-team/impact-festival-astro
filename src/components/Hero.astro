@@ -1,9 +1,6 @@
 ---
 // Hero.astro
-// The photo-collage headline is dozens of individual vector shapes in Figma.
-// Don't rebuild it shape-by-shape: select the whole group in Figma, right-click
-// -> "Export" -> PNG (2x) or SVG, save it as /public/images/hero-collage.svg,
-// and reference it below as one image.
+
 
 interface Props {
   dateLabel?: string;
@@ -23,7 +20,7 @@ const {
 <section class="hero">
   <div class="collage-wrap">
     <img
-      src="/images/hero-collage.svg"
+      src="/images/hero-collage.png"
       alt="Impact Festival — Live at Trifolium"
       class="collage"
     />
@@ -51,8 +48,9 @@ const {
     width: 100%;
   }
 
-  .collage-wrap {
+.collage-wrap {
     padding: 0 28px;
+    margin-bottom: 24px; 
     width: 100%;
     box-sizing: border-box;
   }

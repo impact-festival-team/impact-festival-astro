@@ -1,7 +1,6 @@
 ---
 // Schedule.astro
-// Owns the "What's on" heading + loops through the event list, rendering
-// one ScheduleItem per entry.
+// Owns the "What's on" heading + loops through the event list
 
 import ScheduleItem from './ScheduleItem.astro';
 
@@ -51,19 +50,32 @@ const { events } = Astro.props;
     padding: 24px 28px;
   }
 
+.heading-row {
+    border-bottom: 1px solid var(--color-grey);
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 24px 28px;
+    box-sizing: border-box;
+    width: 100%;
+  }
+
   .heading {
     font-weight: 700;
     font-size: 48px;
-    max-width: 369px;
-    flex: 1 1 260px;
+    margin: 0;
+    flex: 0 0 auto; 
   }
 
   .subheading {
     font-size: 16px;
     font-weight: 500;
-    flex: 1 1 260px;
+    margin: 0;
+    flex: 0 0 auto;
+    text-align: left; 
   }
-
   .link-row {
     display: flex;
     align-items: center;
