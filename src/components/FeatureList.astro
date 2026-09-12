@@ -1,9 +1,6 @@
 ---
 // FeatureList.astro
-// Building photo on the left, stacked FeatureRow list on the right.
-// This is the homepage's own version — different content than the
-// /trifolium subpage's FeatureRow usage, same component, reused with
-// different props (that's the point of building it as props-driven).
+
 
 import FeatureRow from './FeatureRow.astro';
 
@@ -36,11 +33,10 @@ const { image, features } = Astro.props;
     flex-wrap: wrap;
     gap: 0;
     width: 100%;
-    align-items: stretch; /* Forces both image and text side to match height */
-  }
+    align-items: stretch; 
 
   .photo {
-    flex: 1 1 500px; /* Gives slightly more space to the photo */
+    flex: 1 1 500px; 
     min-height: 100%;
     overflow: hidden;
   }

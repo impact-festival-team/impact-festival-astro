@@ -1,7 +1,5 @@
 /* global.css
-   Shared design tokens and base resets used across every page and component.
-   Component-specific styles stay colocated in their own .astro files —
-   only truly global rules belong here. */
+ */
 
 :root {
   --color-black: #261e1e;

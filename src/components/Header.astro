@@ -1,5 +1,5 @@
 ---
-// Header.astro — grid layout for true optical centering of the logo.
+// Header.astro 
 ---
 
 <header class="header">
@@ -26,10 +26,10 @@
   .header {
     background: var(--color-white);
     display: grid;
-    /* 3-column layout: Left and Right get equal width (1fr), Center shrinks to logo width (auto) */
-    grid-template-columns: 1fr auto 1fr;
+    /* Forces true 3-column optical centering */
+    grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
     align-items: center;
-    padding: 24px;
+    padding: 16px 24px;
     width: 100%;
     box-sizing: border-box;
     position: sticky;
@@ -39,31 +39,29 @@
 
   .nav-left {
     display: flex;
-    flex-wrap: wrap;
     align-items: center;
+    justify-content: flex-start;
     gap: 32px;
-    min-width: 0;
   }
 
   .logo-link {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 0 24px; /* Space around the logo */
+    padding: 0 16px;
   }
 
   .logo {
     height: 32px;
     width: auto;
+    display: block;
   }
 
   .nav-right {
     display: flex;
-    flex-wrap: wrap;
     align-items: center;
     justify-content: flex-end;
-    gap: 24px;
-    min-width: 0;
+    gap: 24px; 
   }
 
   .nav-link {
@@ -81,14 +79,15 @@
     color: white;
     font-weight: 500;
     font-size: 18px;
-    padding: 12px 16px;
+    padding: 10px 16px;
     border-radius: 2px;
     display: inline-block;
     text-decoration: none;
     white-space: nowrap;
+    margin-left: 8px;
   }
 
-  /* Responsive spacing */
+  /* Tablet */
   @media (max-width: 900px) {
     .nav-left,
     .nav-right {
@@ -99,11 +98,37 @@
     }
   }
 
+ /* Mobile single-column layout */
   @media (max-width: 640px) {
     .header {
       display: flex;
       flex-direction: column;
+      align-items: center;
       gap: 16px;
+      padding: 16px;
+    }
+
+   
+    .nav-left,
+    .nav-right {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      gap: 12px;
+    }
+
+    .logo-link {
+      padding: 0;
+      order: -1; 
+    }
+
+    .ticket-btn {
+      margin-left: 0; 
+      width: 100%;
+      text-align: center;
+      box-sizing: border-box;
     }
   }
 </style>
