@@ -4,16 +4,6 @@
 
 import FeatureRow from './FeatureRow.astro';
 
-interface Feature {
-  title: string;
-  description: string;
-}
-
-interface Props {
-  image: string;
-  features: Feature[];
-}
-
 const { image, features } = Astro.props;
 ---
 

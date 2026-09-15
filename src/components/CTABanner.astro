@@ -1,15 +1,9 @@
 ---
 // CTABanner.astro
-// Used twice on the page with different text AND different action content
-// (a "Visit Trifolium" button + Instagram link, vs a single ticket button).
-// Title/text are props; the action area is a slot, since its content shape
-// genuinely differs between the two uses.
+// x2
 
-interface Props {
-  heading: string;
-  text?: string;
-  align?: 'left' | 'center';
-}
+// Title/text - props; the action area-slot
+
 
 const { heading, text, align = 'left' } = Astro.props;
 ---

@@ -4,18 +4,6 @@
 
 import ScheduleItem from './ScheduleItem.astro';
 
-interface Event {
-  title: string;
-  description: string;
-  image: string;
-  time: string;
-  category: string;
-}
-
-interface Props {
-  events: Event[];
-}
-
 const { events } = Astro.props;
 ---
 

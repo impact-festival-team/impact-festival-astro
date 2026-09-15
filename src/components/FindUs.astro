@@ -4,10 +4,6 @@
 // Uses Google Maps' embeddable iframe — no API key, no signup, no JS
 
 
-interface Props {
-  address?: string;
-}
-
 const { address = 'Bådehavnsgade 42, 2450 København SV' } = Astro.props;
 const mapSrc = `https://www.google.com/maps?q=${encodeURIComponent(address)}&output=embed`;
 ---
